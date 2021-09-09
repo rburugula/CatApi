@@ -1,0 +1,29 @@
+package com.example.dogapi.di
+
+import com.example.dogapi.api.ApiServiceInterface
+import dagger.Module
+import dagger.Provides
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
+
+@Module
+class RetroModule {
+    @Singleton
+    @Provides
+    fun getRetrofitInstance(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(baseURL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun getApiService(retrofit: Retrofit): ApiServiceInterface =
+        retrofit.create(ApiServiceInterface::class.java)
+
+    companion object {
+        private const val baseURL = "https://api.thecatapi.com/v1/"
+    }
+}
