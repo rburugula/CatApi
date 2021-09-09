@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.dogapi.databinding.FragmentCatBreedBinding
 
 class CatBreedFragment : Fragment() {
+
+    private  var _binding: FragmentCatBreedBinding? = null
+    private val binding get() = _binding!!
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -17,8 +21,12 @@ class CatBreedFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cat_breed, container, false)
+    ): View {
+
+        _binding = FragmentCatBreedBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        return view
+
     }
 }

@@ -2,4 +2,6 @@
     <string name="app_name">DogApi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cat_breed_fragment">cat breed fragment</string>
+    <string name="cat_breed_detail_fragment">cat breed detail fragment</string>
 </resources>
