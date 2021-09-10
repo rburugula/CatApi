@@ -5,4 +5,8 @@
     <string name="cat_breed_fragment">cat breed fragment</string>
     <string name="cat_breed_detail_fragment">cat breed detail fragment</string>
     <string name="error_connecting_to_server">Error connecting to server</string>
+    <string name="name">Name</string>
+    <string name="temperament">Temperament</string>
+    <string name="wikiUrl">Wiki Url</string>
+    <string name="energyLevel">Energy Level</string>
 </resources>

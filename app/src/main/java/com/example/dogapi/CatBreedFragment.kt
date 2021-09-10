@@ -50,8 +50,8 @@ class CatBreedFragment : Fragment() {
 
         recyclerAdapter = RecyclerViewAdapter()
         recyclerView.adapter = recyclerAdapter
-        recyclerAdapter.onItemClick = { CatBreed ->
-            val action = CatBreedFragmentDirections.actionCatBreedFragmentToCatBreedDetailFragment()
+        recyclerAdapter.onItemClick = { catBreed ->
+            val action = CatBreedFragmentDirections.actionCatBreedFragmentToCatBreedDetailFragment(catBreed)
             findNavController().navigate(action)
         }
     }
