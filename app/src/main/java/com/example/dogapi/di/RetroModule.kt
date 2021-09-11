@@ -13,7 +13,7 @@ class RetroModule {
     @Provides
     fun getRetrofitInstance(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(baseURL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -24,6 +24,6 @@ class RetroModule {
         retrofit.create(ApiServiceInterface::class.java)
 
     companion object {
-        private const val baseURL = "https://api.thecatapi.com/v1/"
+        private const val BASE_URL = "https://api.thecatapi.com/v1/"
     }
 }

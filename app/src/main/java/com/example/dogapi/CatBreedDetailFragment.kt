@@ -14,17 +14,19 @@ class CatBreedDetailFragment : Fragment() {
     private lateinit var binding: FragmentCatBreedDetailBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCatBreedDetailBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.tvName.text = args.catBreed.name
-        binding.tvTemperament.text = args.catBreed.temperament
-        binding.tvWikiUrl.text = args.catBreed.wikipedia_url
-        binding.tvEnergyLevel.text = args.catBreed.energy_level.toString()
-
+        binding.apply {
+            tvName.text = args.catBreed.name
+            tvTemperament.text = args.catBreed.temperament
+            tvWikiUrl.text = args.catBreed.wikipedia_url
+            tvEnergyLevel.text = args.catBreed.energy_level.toString()
+        }
         return view
     }
 }
