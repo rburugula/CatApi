@@ -2,21 +2,19 @@ package com.example.dogapi
 
 import android.content.Context
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dogapi.adapter.RecyclerViewAdapter
 import com.example.dogapi.databinding.FragmentCatBreedBinding
-import com.example.dogapi.model.CatBreed
 import com.example.dogapi.viewModel.MainActivityViewModel
 import javax.inject.Inject
 
-class CatBreedFragment : Fragment() {
+class CatBreedFragment : Fragment(),
+    androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
     @Inject
     lateinit var viewModel: MainActivityViewModel
@@ -24,7 +22,6 @@ class CatBreedFragment : Fragment() {
     private lateinit var binding: FragmentCatBreedBinding
 
     private lateinit var recyclerAdapter: RecyclerViewAdapter
-    private lateinit var catBreeds: ArrayList<CatBreed>
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -43,6 +40,7 @@ class CatBreedFragment : Fragment() {
     }
 
     private fun initView() {
+        binding.searchView.setOnQueryTextListener(this)
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(activity)
         val decoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
@@ -51,7 +49,8 @@ class CatBreedFragment : Fragment() {
         recyclerAdapter = RecyclerViewAdapter()
         recyclerView.adapter = recyclerAdapter
         recyclerAdapter.onItemClick = { catBreed ->
-            val action = CatBreedFragmentDirections.actionCatBreedFragmentToCatBreedDetailFragment(catBreed)
+            val action =
+                CatBreedFragmentDirections.actionCatBreedFragmentToCatBreedDetailFragment(catBreed)
             findNavController().navigate(action)
         }
     }
@@ -59,7 +58,6 @@ class CatBreedFragment : Fragment() {
     private fun initViewModel() {
         viewModel.catBreedsLiveData.observe(viewLifecycleOwner) { result ->
             result.onSuccess {
-                catBreeds = it
                 recyclerAdapter.setUpdatedData(it)
             }.onFailure {
                 showErrrorMessage()
@@ -72,4 +70,16 @@ class CatBreedFragment : Fragment() {
         Toast.makeText(context, getString(R.string.error_connecting_to_server), Toast.LENGTH_LONG)
             .show()
     }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        recyclerAdapter.filter.filter(query)
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        recyclerAdapter.filter.filter(newText)
+        return false
+    }
+
+
 }

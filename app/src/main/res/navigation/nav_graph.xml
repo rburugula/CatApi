@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/catBreedFragment"
         android:name="com.example.dogapi.CatBreedFragment"
-        android:label="fragment_cat_breed"
+        android:label="Cat breeds"
         tools:layout="@layout/fragment_cat_breed">
         <action
             android:id="@+id/action_catBreedFragment_to_catBreedDetailFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/catBreedDetailFragment"
         android:name="com.example.dogapi.CatBreedDetailFragment"
-        android:label="fragment_cat_breed_detail"
+        android:label="Cat breed info"
         tools:layout="@layout/fragment_cat_breed_detail">
         <argument
             android:name="CatBreed"
