@@ -10,7 +10,6 @@ I have architected the code in a way that there is seperation of concerns, have 
 UI is very basic in the application, but I have used jetpack navigation component
 I have added unit tests to the repository layer and the viewmodel.
 
-
 Apologies for the project being names DogApi and the internally everything else is Cat related - When I created the application I was intending to use dop api but as the documentation of the catapi was more clear i used that instead.
 
-If I would spend more time, I would have made the UI look pretier and add more unit tests for the LiveData.
+Please note that UI is very basic and I have not spent too much time on making the UI look fabulous
