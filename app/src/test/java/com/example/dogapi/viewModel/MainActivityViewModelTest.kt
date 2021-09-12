@@ -2,6 +2,7 @@ package com.example.dogapi.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.example.dogapi.MainCoroutineTestRule
 import com.example.dogapi.data.DataRepository
 import com.example.dogapi.model.CatBreed
 import com.example.dogapi.model.CatImage
@@ -18,6 +19,8 @@ class MainActivityViewModelTest {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
+    @get:Rule
+    val coroutinesTestRule = MainCoroutineTestRule()
 
     private val dataRepository: DataRepository = mockk(relaxed = true)
     private val viewModel = MainActivityViewModel(dataRepository)

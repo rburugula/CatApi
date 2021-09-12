@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +15,7 @@ import com.example.dogapi.viewModel.MainActivityViewModel
 import javax.inject.Inject
 
 class CatBreedFragment : Fragment(),
-    androidx.appcompat.widget.SearchView.OnQueryTextListener {
+    SearchView.OnQueryTextListener {
 
     @Inject
     lateinit var viewModel: MainActivityViewModel
@@ -81,6 +82,4 @@ class CatBreedFragment : Fragment(),
         recyclerAdapter.filter.filter(newText)
         return false
     }
-
-
 }
