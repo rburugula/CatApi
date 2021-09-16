@@ -1,4 +1,4 @@
-# DogApi
+# CatApi
 
 Libraries used Retrofit - for API calls 
 lifecycle-extensions:2.2.0 - For View Model 
